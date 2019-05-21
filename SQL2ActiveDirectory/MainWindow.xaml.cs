@@ -26,14 +26,14 @@ namespace SQL2ActiveDirectory
         {
             InitializeComponent();
             textboxUser.Text = "مهدي ناصري";
-            passwordboxPass.Password = "MehdiNaseri!";
+            passwordboxPass.Password = "XXX";
             stringDomainName = System.Net.NetworkInformation.IPGlobalProperties.GetIPGlobalProperties().DomainName;
         }
 
         string stringDomainName;
-        string stringMehdiADPassword = "MehdiNaseri!";
-        string stringSQLpassword = "user-ad";
-        string stringSQLusername = "user-ad@P3eez.sts";
+        string stringMehdiADPassword = "XXX";
+        string stringSQLpassword = "user-XXX";
+        string stringSQLusername = "user-XXX";
         
 
 
