@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TotalSystemGAModelNamespace.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TotalSystemGAModelNamespaceStoreContainer">
+    <EntitySet Name="Person" EntityType="TotalSystemGAModelNamespace.Store.Person" store:Type="Tables" Schema="Basic" />
+    <EntitySet Name="Employee" EntityType="TotalSystemGAModelNamespace.Store.Employee" store:Type="Tables" Schema="Staff" />
+    <EntitySet Name="EmployeeOrganChart" EntityType="TotalSystemGAModelNamespace.Store.EmployeeOrganChart" store:Type="Tables" Schema="Staff" />
+    <EntitySet Name="OrganChart" EntityType="TotalSystemGAModelNamespace.Store.OrganChart" store:Type="Tables" Schema="Staff" />
+    <EntitySet Name="Unit" EntityType="TotalSystemGAModelNamespace.Store.Unit" store:Type="Tables" Schema="Staff" />
+    <AssociationSet Name="FK_Employee_Person1" Association="TotalSystemGAModelNamespace.Store.FK_Employee_Person1">
+      <End Role="Person" EntitySet="Person" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeExecutionChart_Employee" Association="TotalSystemGAModelNamespace.Store.FK_EmployeeExecutionChart_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeOrganChart" EntitySet="EmployeeOrganChart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExecutionChart_Unit" Association="TotalSystemGAModelNamespace.Store.FK_ExecutionChart_Unit">
+      <End Role="OrganChart" EntitySet="OrganChart" />
+      <End Role="OrganChart1" EntitySet="OrganChart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unit_Unit" Association="TotalSystemGAModelNamespace.Store.FK_Unit_Unit">
+      <End Role="Unit" EntitySet="Unit" />
+      <End Role="Unit1" EntitySet="Unit" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="Family" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="FatherName" Type="nvarchar" MaxLength="200" />
+    <Property Name="BirthDate" Type="char" MaxLength="10" />
+    <Property Name="City_Id" Type="bigint" />
+    <Property Name="IdNumber" Type="nvarchar" MaxLength="20" />
+    <Property Name="NationalCode" Type="nvarchar" MaxLength="20" />
+    <Property Name="Gender_Id" Type="bigint" Nullable="false" />
+    <Property Name="TimeStamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="CardId" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="CreationFileDate" Type="char" MaxLength="10" />
+    <Property Name="PrimaryEmploymentDate" Type="char" MaxLength="10" />
+    <Property Name="Native_Id" Type="bigint" />
+    <Property Name="Religion_Id" Type="bigint" />
+    <Property Name="EMail" Type="nvarchar" MaxLength="100" />
+    <Property Name="TimeStamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="BloodType_Id" Type="bigint" />
+    <Property Name="CompanyType_Id" Type="bigint" Nullable="false" />
+    <Property Name="FamilyCardId" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="EmployeeOrganChart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OrganChart_Id" Type="bigint" Nullable="false" />
+    <Property Name="Employee_Id" Type="bigint" Nullable="false" />
+    <Property Name="FromDate" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="ToDate" Type="char" MaxLength="10" />
+    <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="TimeStamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="OrganChart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Job_Id" Type="bigint" />
+    <Property Name="Unit_Id" Type="bigint" Nullable="false" />
+    <Property Name="OrganChart_Parent_Id" Type="bigint" />
+    <Property Name="PositionType_Id" Type="bigint" Nullable="false" />
+    <Property Name="TimeStamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="Date" Type="nvarchar" MaxLength="10" />
+    <Property Name="KeepHistory" Type="bit" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="nvarchar" Nullable="false" MaxLength="20" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="200" />
+    <Property Name="Unit_Parent_Id" Type="bigint" />
+    <Property Name="TimeStamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+    <Property Name="IsManagement" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Employee_Person1">
+    <End Role="Person" Type="TotalSystemGAModelNamespace.Store.Person" Multiplicity="1" />
+    <End Role="Employee" Type="TotalSystemGAModelNamespace.Store.Employee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeExecutionChart_Employee">
+    <End Role="Employee" Type="TotalSystemGAModelNamespace.Store.Employee" Multiplicity="1" />
+    <End Role="EmployeeOrganChart" Type="TotalSystemGAModelNamespace.Store.EmployeeOrganChart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeOrganChart">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExecutionChart_Unit">
+    <End Role="OrganChart" Type="TotalSystemGAModelNamespace.Store.OrganChart" Multiplicity="0..1" />
+    <End Role="OrganChart1" Type="TotalSystemGAModelNamespace.Store.OrganChart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrganChart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrganChart1">
+        <PropertyRef Name="OrganChart_Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unit_Unit">
+    <End Role="Unit" Type="TotalSystemGAModelNamespace.Store.Unit" Multiplicity="0..1" />
+    <End Role="Unit1" Type="TotalSystemGAModelNamespace.Store.Unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Unit1">
+        <PropertyRef Name="Unit_Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

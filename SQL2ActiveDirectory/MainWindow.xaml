@@ -1,0 +1,31 @@
+﻿<Window x:Class="SQL2ActiveDirectory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SQL Server to ActiveDirectory (PSEEZ)" Height="491.791" Width="981.716" Icon="System.ico">
+    <Grid>
+        <Button x:Name="buttonAnalyze" Content="Analyze Add" HorizontalAlignment="Left" Margin="413,16,0,0" VerticalAlignment="Top" Width="82" Click="buttonAnalyze_Click" IsDefault="True" />
+        <DataGrid x:Name="datagridResult" Margin="10,91,10,10"/>
+        <TextBox x:Name="textboxUser" HorizontalAlignment="Left" Height="23" Margin="577,8,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141"/>
+        <Button x:Name="buttonAdd" Content="Add" HorizontalAlignment="Left" Margin="563,62,0,0" VerticalAlignment="Top" Width="75" Click="buttonAdd_Click"/>
+        <Label Content="User:" HorizontalAlignment="Left" Margin="537,6,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="513,34,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button1" Content="ActiveDirectory" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top" Width="90" Click="button1_Click" Height="20"/>
+        <Button x:Name="button2" Content="SQL Server" HorizontalAlignment="Left" Margin="23,34,0,0" VerticalAlignment="Top" Width="90" Click="button2_Click" Height="20"/>
+        <Button x:Name="button3" Content="New Users" HorizontalAlignment="Left" Margin="23,60,0,0" VerticalAlignment="Top" Width="90" Click="button3_Click" Height="20"/>
+        <CheckBox x:Name="CheckBoxAD" Content="" HorizontalAlignment="Left" Margin="118,12,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="CheckBoxSQL" Content="" HorizontalAlignment="Left" Margin="118,36,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox x:Name="CheckBoxNewUser" Content="" HorizontalAlignment="Left" Margin="118,62,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Button x:Name="buttonExport" Content="Export" HorizontalAlignment="Left" Margin="276,29,0,0" VerticalAlignment="Top" Width="75" Height="39" Click="buttonExport_Click" />
+        <Button x:Name="button4" Content="New Users Filtered" HorizontalAlignment="Left" Margin="143,60,0,0" VerticalAlignment="Top" Width="103" Click="button4_Click"/>
+        <CheckBox x:Name="CheckBoxNewUserActive" Content="" HorizontalAlignment="Left" Margin="251,62,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Button x:Name="buttonSqlFiltered" Content="SQL Server Filtered" HorizontalAlignment="Left" Margin="143,34,0,0" VerticalAlignment="Top" Width="103" Click="buttonSqlFiltered_Click"/>
+        <CheckBox x:Name="CheckBoxSQLfiltered" Content="" HorizontalAlignment="Left" Margin="251,36,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <Button x:Name="buttonReport" Content="Save Report" HorizontalAlignment="Left" Margin="413,41,0,0" VerticalAlignment="Top" Width="82" Click="buttonReport_Click" />
+        <PasswordBox x:Name="passwordboxPass" HorizontalAlignment="Left" Margin="576,36,0,0" VerticalAlignment="Top" Width="142" Height="22"/>
+        <Button x:Name="buttonAnalyzeDelete" Content="Analyze Delete" HorizontalAlignment="Left" Margin="761,15,0,0" VerticalAlignment="Top" Width="84" Click="buttonAnalyzeDelete_Click" />
+        <Button x:Name="buttonReportDelete" Content="Save Report" HorizontalAlignment="Left" Margin="761,40,0,0" VerticalAlignment="Top" Width="84" Click="buttonReportDelete_Click" />
+        <Button x:Name="buttonDelete" Content="Delete" HorizontalAlignment="Left" Margin="643,62,0,0" VerticalAlignment="Top" Width="75" Click="buttonDelete_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="892,30,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

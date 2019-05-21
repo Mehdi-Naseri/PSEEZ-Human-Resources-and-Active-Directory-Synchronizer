@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TotalSystemGAModelNamespaceStoreContainer" CdmEntityContainer="TotalSystemGAEntities">
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="TotalSystemGAModelNamespace.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+          <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
+          <ScalarProperty Name="NationalCode" ColumnName="NationalCode" />
+          <ScalarProperty Name="Gender_Id" ColumnName="Gender_Id" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="TotalSystemGAModelNamespace.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CardId" ColumnName="CardId" />
+          <ScalarProperty Name="CreationFileDate" ColumnName="CreationFileDate" />
+          <ScalarProperty Name="PrimaryEmploymentDate" ColumnName="PrimaryEmploymentDate" />
+          <ScalarProperty Name="Native_Id" ColumnName="Native_Id" />
+          <ScalarProperty Name="Religion_Id" ColumnName="Religion_Id" />
+          <ScalarProperty Name="EMail" ColumnName="EMail" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="BloodType_Id" ColumnName="BloodType_Id" />
+          <ScalarProperty Name="CompanyType_Id" ColumnName="CompanyType_Id" />
+          <ScalarProperty Name="FamilyCardId" ColumnName="FamilyCardId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeOrganCharts">
+      <EntityTypeMapping TypeName="TotalSystemGAModelNamespace.EmployeeOrganChart">
+        <MappingFragment StoreEntitySet="EmployeeOrganChart">
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="Employee_Id" ColumnName="Employee_Id" />
+          <ScalarProperty Name="OrganChart_Id" ColumnName="OrganChart_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrganCharts">
+      <EntityTypeMapping TypeName="TotalSystemGAModelNamespace.OrganChart">
+        <MappingFragment StoreEntitySet="OrganChart">
+          <ScalarProperty Name="KeepHistory" ColumnName="KeepHistory" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="PositionType_Id" ColumnName="PositionType_Id" />
+          <ScalarProperty Name="OrganChart_Parent_Id" ColumnName="OrganChart_Parent_Id" />
+          <ScalarProperty Name="Unit_Id" ColumnName="Unit_Id" />
+          <ScalarProperty Name="Job_Id" ColumnName="Job_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Units">
+      <EntityTypeMapping TypeName="TotalSystemGAModelNamespace.Unit">
+        <MappingFragment StoreEntitySet="Unit">
+          <ScalarProperty Name="IsManagement" ColumnName="IsManagement" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Unit_Parent_Id" ColumnName="Unit_Parent_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

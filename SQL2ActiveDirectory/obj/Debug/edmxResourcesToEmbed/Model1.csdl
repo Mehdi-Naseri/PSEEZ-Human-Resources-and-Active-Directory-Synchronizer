@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TotalSystemGAModelNamespace" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TotalSystemGAEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="People" EntityType="TotalSystemGAModelNamespace.Person" />
+    <EntitySet Name="Employees" EntityType="TotalSystemGAModelNamespace.Employee" />
+    <AssociationSet Name="FK_Employee_Person1" Association="TotalSystemGAModelNamespace.FK_Employee_Person1">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <EntitySet Name="EmployeeOrganCharts" EntityType="TotalSystemGAModelNamespace.EmployeeOrganChart" />
+    <EntitySet Name="OrganCharts" EntityType="TotalSystemGAModelNamespace.OrganChart" />
+    <EntitySet Name="Units" EntityType="TotalSystemGAModelNamespace.Unit" />
+    <AssociationSet Name="FK_EmployeeExecutionChart_Employee" Association="TotalSystemGAModelNamespace.FK_EmployeeExecutionChart_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="EmployeeOrganChart" EntitySet="EmployeeOrganCharts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExecutionChart_Unit" Association="TotalSystemGAModelNamespace.FK_ExecutionChart_Unit">
+      <End Role="OrganChart" EntitySet="OrganCharts" />
+      <End Role="OrganChart1" EntitySet="OrganCharts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unit_Unit" Association="TotalSystemGAModelNamespace.FK_Unit_Unit">
+      <End Role="Unit" EntitySet="Units" />
+      <End Role="Unit1" EntitySet="Units" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Family" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="FatherName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+    <Property Name="BirthDate" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="City_Id" Type="Int64" />
+    <Property Name="IdNumber" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="NationalCode" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="Gender_Id" Type="Int64" Nullable="false" />
+    <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+    <Property Name="Mobile" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Employee" Relationship="TotalSystemGAModelNamespace.FK_Employee_Person1" FromRole="Person" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="CardId" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="CreationFileDate" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="PrimaryEmploymentDate" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="Native_Id" Type="Int64" />
+    <Property Name="Religion_Id" Type="Int64" />
+    <Property Name="EMail" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+    <Property Name="BloodType_Id" Type="Int64" />
+    <Property Name="CompanyType_Id" Type="Int64" Nullable="false" />
+    <Property Name="FamilyCardId" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="Person" Relationship="TotalSystemGAModelNamespace.FK_Employee_Person1" FromRole="Employee" ToRole="Person" />
+    <NavigationProperty Name="EmployeeOrganCharts" Relationship="TotalSystemGAModelNamespace.FK_EmployeeExecutionChart_Employee" FromRole="Employee" ToRole="EmployeeOrganChart" />
+  </EntityType>
+  <Association Name="FK_Employee_Person1">
+    <End Role="Person" Type="TotalSystemGAModelNamespace.Person" Multiplicity="1" />
+    <End Role="Employee" Type="TotalSystemGAModelNamespace.Employee" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EmployeeOrganChart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="OrganChart_Id" Nullable="false" />
+    <Property Type="Int64" Name="Employee_Id" Nullable="false" />
+    <Property Type="String" Name="FromDate" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="ToDate" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Type="Binary" Name="TimeStamp" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Employee" Relationship="TotalSystemGAModelNamespace.FK_EmployeeExecutionChart_Employee" FromRole="EmployeeOrganChart" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="OrganChart">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="Job_Id" />
+    <Property Type="Int64" Name="Unit_Id" Nullable="false" />
+    <Property Type="Int64" Name="OrganChart_Parent_Id" />
+    <Property Type="Int64" Name="PositionType_Id" Nullable="false" />
+    <Property Type="Binary" Name="TimeStamp" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="String" Name="Date" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="KeepHistory" />
+    <NavigationProperty Name="OrganChart1" Relationship="TotalSystemGAModelNamespace.FK_ExecutionChart_Unit" FromRole="OrganChart" ToRole="OrganChart1" />
+    <NavigationProperty Name="OrganChart2" Relationship="TotalSystemGAModelNamespace.FK_ExecutionChart_Unit" FromRole="OrganChart1" ToRole="OrganChart" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="Unit_Parent_Id" />
+    <Property Type="Binary" Name="TimeStamp" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Type="Boolean" Name="IsManagement" Nullable="false" />
+    <NavigationProperty Name="Unit1" Relationship="TotalSystemGAModelNamespace.FK_Unit_Unit" FromRole="Unit" ToRole="Unit1" />
+    <NavigationProperty Name="Unit2" Relationship="TotalSystemGAModelNamespace.FK_Unit_Unit" FromRole="Unit1" ToRole="Unit" />
+  </EntityType>
+  <Association Name="FK_EmployeeExecutionChart_Employee">
+    <End Type="TotalSystemGAModelNamespace.Employee" Role="Employee" Multiplicity="1" />
+    <End Type="TotalSystemGAModelNamespace.EmployeeOrganChart" Role="EmployeeOrganChart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeOrganChart">
+        <PropertyRef Name="Employee_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExecutionChart_Unit">
+    <End Type="TotalSystemGAModelNamespace.OrganChart" Role="OrganChart" Multiplicity="0..1" />
+    <End Type="TotalSystemGAModelNamespace.OrganChart" Role="OrganChart1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrganChart">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="OrganChart1">
+        <PropertyRef Name="OrganChart_Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unit_Unit">
+    <End Type="TotalSystemGAModelNamespace.Unit" Role="Unit" Multiplicity="0..1" />
+    <End Type="TotalSystemGAModelNamespace.Unit" Role="Unit1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Unit">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Unit1">
+        <PropertyRef Name="Unit_Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
